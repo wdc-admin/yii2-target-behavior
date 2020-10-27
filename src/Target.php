@@ -102,6 +102,7 @@ class Target extends Behavior
 
         foreach ($this->getCreateItems() as $item) {
             $this->callUserFunction($this->beforeLink, $item);
+            $attributes = ArrayHelper::getValue($item->scenarios(), $item->getScenario(), $attributes);
             if ($item->validate($attributes) === false) {
                 foreach ($item->getErrors() as $errors) {
                     foreach ($errors as $error) {
